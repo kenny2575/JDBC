@@ -19,10 +19,10 @@ public class CustomerRepository {
 
     public CustomerRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        query = read("queryCustomer.sql");
     }
 
     public List<String> getProductName(String name){
-        query = read("queryCustomer.sql");
         return namedParameterJdbcTemplate.queryForList(query, Map.of("name", name), String.class);
     }
 
